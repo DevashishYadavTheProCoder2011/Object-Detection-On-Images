@@ -3,7 +3,7 @@ AC_image = "";
 objects = [];
 
 function preload(){
-    AC_image = loadImage("AC.JPEG");
+    AC_image = loadImage("AC.jpg");
 }
 
 function setup(){
