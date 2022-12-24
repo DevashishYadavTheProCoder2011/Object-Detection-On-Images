@@ -1,9 +1,9 @@
 Status = "";
-AC_image = "";
+fan_image = "";
 objects = [];
 
 function preload(){
-    AC_image = loadImage("AC.jpg");
+    fan_image = loadImage("Fan.jpg");
 }
 
 function setup(){
@@ -16,7 +16,7 @@ function setup(){
 function modelLoaded(){
     console.log("Model Loaded!");
     Status = true;
-    object_Detector.detect(AC_image,gotResults);
+    object_Detector.detect(fan_image,gotResults);
 }
 
 function gotResults(error,results){
@@ -28,17 +28,17 @@ function gotResults(error,results){
 }
 
 function draw(){
-    image(AC_image,0,0,640,350);
+    image(fan_image,0,0,640,350);
     if(Status != ""){
         for(i = 0; i < objects.length; i++){
             document.getElementById("status").innerHTML = "Status: Objects Detected";
 
             fill("#fc0303");
             percent = floor(objects[i].confidence * 100);
-            text(objects[i].label + " " + percent + "%",objects[i].x, objects[i].y);
+            text(objects[i].label + " " + percent + "%",objects[i].x - 14, objects[i].y - 175);
             noFill();
             stroke("#fc0303");
-            rect(objects[i].x, objects[i].y, objects[i].width, objects[i].height);
+            rect(objects[i].x - 14, objects[i].y - 175, objects[i].width - 2326, objects[i].height - 2850);
         }
     }
 }
